@@ -186,7 +186,7 @@ layout {
     struts {
         // left 64
         // right 64
-        // top 64
+        top 30
         // bottom 64
     }
 }
@@ -198,7 +198,9 @@ layout {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "pipewire"
-spawn-at-startup "waybar"
+spawn-at-startup "eww" "daemon"
+spawn-at-startup "eww" "open" "bar" "--screen" "0" "--id" "0"
+spawn-at-startup "eww" "open" "bar" "--screen" "1" "--id" "1"
 spawn-at-startup "/home/pingutz/xwayland-satellite/target/release/xwayland-satellite"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.

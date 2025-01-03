@@ -1,0 +1,34 @@
+.uwu {
+    background-color: pink;
+}
+
+.uwu label {
+    margin-right: 30px;
+}
+
+.miaumiau {
+    background-color: plum;
+}
+
+.time {
+    padding-right: 0.5em;
+}
+
+.spacing {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.miaumiau .shutdown {
+    font-size: 24px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: black;
+    color: white;
+}
+
+.miaumiau .shutdown:hover {
+    background: red;
+}
+
