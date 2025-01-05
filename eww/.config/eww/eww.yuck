@@ -1,28 +1,37 @@
 (defpoll time :interval "1s"
-  "date '+%d.%m %Y %H:%M'")
+"date '+%d.%m %Y %H:%M'")
 
-(defwidget greeter []
+(defvar my-json "[1, 2, 3]")
+(defvar foo `"gadse"`)
+; (defvar foo `{"asdf": [1,2,3,4,5]})`
+
+(deflisten windows :initial "{}"
+`niri-window-handler`)
+
+(defwidget bar-widget []
   (box :halign "fill"
-  (box :halign "start" :orientation "horizontal" :class "uwu"
-    (label :text "miaumiau" :xalign 0)
-    (label :text "miaumiau" :xalign 0)
-    (label :text "uwu" :xalign 0)
-  )
-  (box :space-evenly false :halign "end" :orientation "horizontal" :class "miaumiau"
-    (label :class "time" :halign "end" :text time :xalign 0)
-    (eventbox :onclick "sudo shutdown -h now" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
-	 )
-))
+    (box :halign "start" :orientation "horizontal" :class "uwu"
+      (for entry in {jq(windows, "keys")}
+        (button :onclick "notify-send 'click' 'button ${entry}'"
+          {jq(windows, `.["${entry}"]`)})
+      )
+    )
+    (button {jq(foo, ".", "r")})
+    (box :space-evenly false :halign "end" :orientation "horizontal" :class "miaumiau"
+      (label :class "time" :halign "end" :text time :xalign 0)
+      (eventbox :onclick "sudo shutdown -h now" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
+    )
+  ))
 
 
 (defwindow bar
-           :geometry (geometry :x "0%"
-                               :y "0px"
-                               :width "100%"
-                               :height "30px"
-                               :anchor "top center")
-           :stacking "fg"
-           :reserve (struts :distance "30px" :side "top")
-           :windowtype "dock"
-           :wm-ignore false
-    (greeter))
+  :geometry (geometry :x "0%"
+    :y "0px"
+    :width "100%"
+    :height "30px"
+  :anchor "top center")
+  :stacking "fg"
+  :reserve (struts :distance "30px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+  (bar-widget))
