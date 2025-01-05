@@ -1,13 +1,14 @@
-.uwu {
+.left {
     background-color: pink;
 }
 
-.uwu label {
+.left label {
     margin-right: 30px;
 }
 
 .miaumiau {
     background-color: plum;
+    padding-left: 5px;
 }
 
 .time {
@@ -19,8 +20,16 @@
     margin-right: 10px;
 }
 
+.systray {
+    background: green;
+}
 
-.miaumiau .shutdown {
+.systray image:only-child{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.shutdown {
     font-size: 24px;
     border: 1px solid transparent;
     border-radius: 0;
@@ -28,7 +37,7 @@
     color: white;
 }
 
-.miaumiau .shutdown:hover {
+.shutdown:hover {
     background: red;
 }
 
