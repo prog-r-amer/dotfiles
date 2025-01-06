@@ -24,7 +24,7 @@
     background: green;
 }
 
-.systray image:only-child{
+.systray > * > image{
     padding-left: 5px;
     padding-right: 5px;
 }

@@ -1,4 +1,5 @@
 if status is-interactive
+	fish_add_path "/home/pingutz/.local/bin"
 	cd ~/Documents
 end
 
