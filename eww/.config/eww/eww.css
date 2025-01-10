@@ -20,6 +20,10 @@
     margin-right: 10px;
 }
 
+.volume {
+    background: skyblue;
+}
+
 .systray {
     background: green;
 }

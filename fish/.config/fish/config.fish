@@ -1,4 +1,5 @@
 if status is-interactive
+	set -Ux MANPAGER 'nvim +Man!'
 	fish_add_path "/home/pingutz/.local/bin"
 	cd ~/Documents
 end
