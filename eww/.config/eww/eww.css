@@ -20,12 +20,16 @@
     margin-right: 10px;
 }
 
-.volume {
-    background: skyblue;
+.right > *:nth-child(odd) {
+	background: #FFD9DA;
 }
 
-.systray {
-    background: green;
+.right > *:nth-child(even) {
+	background: #C7D9B7;
+}
+
+.right > * {
+	border-left: 1px solid black;
 }
 
 .systray > * > image{
