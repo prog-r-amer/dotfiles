@@ -42,6 +42,10 @@
     padding-right: 5px;
 }
 
+.shutdown-modal {
+	background: transparent;
+}
+
 .shutdown {
     font-size: 24px;
     border: 1px solid transparent;
@@ -51,5 +55,14 @@
 }
 
 .shutdown:hover {
-    background: red;
+	background: red;
+}
+
+.shutdown-box:hover {
+    background: #C7D9B7;
+}
+
+.shutdown-box{
+	font-size: 3em;
+	background: #FFD9DA;
 }
