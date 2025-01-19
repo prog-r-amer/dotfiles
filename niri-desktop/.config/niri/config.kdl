@@ -197,6 +197,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
+spawn-at-startup "/home/pingutz/.local/bin/pingi-ev"
 spawn-at-startup "pipewire"
 spawn-at-startup "dunst"
 spawn-at-startup "eww" "daemon"

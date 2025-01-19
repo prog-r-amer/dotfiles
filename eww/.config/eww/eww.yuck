@@ -7,10 +7,11 @@
 (defpoll volume :interval "1s" "pactl get-sink-volume 0 | grep -o -E [[:digit:]]+% | head -n 1")
 (defpoll volume_mike :interval "1s" "pactl get-source-volume 0 | grep -o -E [[:digit:]]+% | head -n 1")
 
+
 (defwidget shutdown-modal-widget []
 	(box :spacing 10 :space-evenly false :halign "center" :class "shutdown-modal"
-		(eventbox :class "shutdown-box" :onclick "sudo shutdown -h now" :width 100 :height 100 (label :text "⏻"))
-		(eventbox :class "shutdown-box" :onclick "eww close shutdown-modal" :width 100 :height 100 (label :text "X")) 
+		(button :class "shutdown-box" :onclick "sudo shutdown -h now" :width 100 :height 100 (label :text "⏻"))
+		(button :class "shutdown-box" :onclick "eww close shutdown-modal" :width 100 :height 100 (label :text "X")) 
 	))
 
 
@@ -28,7 +29,7 @@
       (box :class "volume" :space-evenly false (label :text volume) (label :unindent false :text " / ") (label :text volume_mike))
       (box :space-evenly false :halign "end" :orientation "horizontal" :class "miaumiau"
         (label :class "time" :halign "end" :text time :xalign 0)
-        (eventbox :onclick "eww open shutdown-modal --screen 0" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
+        (eventbox :onclick "eww open shutdown-modal --screen 1" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
       )
     )
   ))
@@ -45,8 +46,9 @@
 (defwindow shutdown-modal :geometry (geometry :x "0%"
     :y "0px"
     :width "50%"
-    :height: "100%" 
+    :height: "100%"
   :anchor "center center")
-  :stacking "overlay"
-  (shutdown-modal-widget))
+  :stacking "overlay"  
+ :focusable true
+ (shutdown-modal-widget))
 

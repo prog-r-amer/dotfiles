@@ -58,7 +58,7 @@
 	background: red;
 }
 
-.shutdown-box:hover {
+.shutdown-box:hover, .shutdown-box:focus {
     background: #C7D9B7;
 }
 
