@@ -263,7 +263,7 @@ binds {
 
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Space { spawn "ghostty"; }
+    Mod+Space { spawn "foot"; }
     Mod+Return { spawn "fuzzel" "-b" "f3e1ddff" "-t" "000000ff" "-s" "89023eff" "-S" "ffffffff" \
 	 "--input-color" "000000ff" "-M" "c7d9b7ff"; }
     Super+L { spawn "swaylock"; }
