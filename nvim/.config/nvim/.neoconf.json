@@ -11,5 +11,16 @@
         "enabled": true
       }
     }
+  },
+   "lspconfig": {
+    "jdtls": {
+      "java.configuration.runtimes": [
+        {
+          "name": "openjdk-21",
+          "path": "/usr/lib/jvm/openjdk21/",
+          "default": true
+        }
+      ]
+    }
   }
 }

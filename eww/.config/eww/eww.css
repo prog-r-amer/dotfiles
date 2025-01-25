@@ -63,8 +63,13 @@
 	background: red;
 }
 
-.shutdown-box:hover, .shutdown-box:focus {
+.shutdown-box:focus {
     background: #C7D9B7;
+}
+
+.shutdown-box:hover {
+  background: #89023E;
+  color: white;
 }
 
 .shutdown-box{
