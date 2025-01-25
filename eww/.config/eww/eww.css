@@ -25,6 +25,11 @@
 	background: #C7D9B7;
 }
 
+.right label {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
 .right > *:nth-child(odd) {
 	background: #FFD9DA;
 }
