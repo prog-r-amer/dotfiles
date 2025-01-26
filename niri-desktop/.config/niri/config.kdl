@@ -267,7 +267,7 @@ binds {
     Mod+Space { spawn "foot"; }
     Mod+Return { spawn "fuzzel" "-b" "f3e1ddff" "-t" "000000ff" "-s" "89023eff" "-S" "ffffffff" \
 	 "--input-color" "000000ff" "-M" "c7d9b7ff"; }
-    Super+L { spawn "swaylock"; }
+    Super+L { spawn "gtklock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
