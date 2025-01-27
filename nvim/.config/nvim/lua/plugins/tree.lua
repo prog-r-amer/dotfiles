@@ -4,7 +4,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
-			"<C-3>",
+			"<C-2>",
 			function()
 				local api = require("nvim-tree.api")
 				local node = api.tree.get_node_under_cursor()
