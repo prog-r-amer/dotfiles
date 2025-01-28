@@ -50,10 +50,7 @@ return {
 			},
 		},
 	},
-	{
-		"ibhagbwan/fzf-lua",
-		opts = { files = { path_shorten = 3 } },
-	},
+	{ "ibhagbwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
 	{
 		"williamboman/mason.nvim",
 		opts = { ensure_installed = { "stylua", "shellcheck", "shfmt", "flake8" } },
