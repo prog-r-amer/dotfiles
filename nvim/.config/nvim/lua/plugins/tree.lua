@@ -4,6 +4,13 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
+			"<C-1>",
+			function()
+				local api = require("nvim-tree.api")
+				api.tree.open()
+			end,
+		},
+		{
 			"<C-2>",
 			function()
 				local api = require("nvim-tree.api")
@@ -12,7 +19,7 @@ return {
 			end,
 		},
 		{
-			"<C-1>",
+			"<C-3>",
 			function()
 				local api = require("nvim-tree.api")
 				api.tree.toggle({ file_path = true })
