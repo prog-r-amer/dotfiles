@@ -50,9 +50,10 @@ return {
 			},
 		},
 	},
+	{ "stevearc/conform.nvim", opts = { formatters_by_ft = { json = { "prettier" } } } },
 	{ "ibhagbwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
 	{
 		"williamboman/mason.nvim",
-		opts = { ensure_installed = { "stylua", "shellcheck", "shfmt", "flake8" } },
+		opts = { ensure_installed = { "stylua", "shellcheck", "shfmt", "flake8", "prettier" } },
 	},
 }
