@@ -1,16 +1,16 @@
 return {
-	"folke/neodev.nvim",
 	"folke/which-key.nvim",
-	{ "folke/neoconf.nvim", cmd = "Neoconf" },
 	{
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
+		dependencies = { { "folke/neoconf.nvim", cmd = "Neoconf", config = true } },
 		opts = {
 			---@type lspconfig.options
 			servers = {
 				-- pyright will be automatically installed with mason and loaded with lspconfig
 				pyright = {},
 				lemminx = {},
+				jsonls = {},
 			},
 		},
 	},
@@ -51,7 +51,7 @@ return {
 		},
 	},
 	{ "stevearc/conform.nvim", opts = { formatters_by_ft = { json = { "prettier" } } } },
-	{ "ibhagbwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
+	{ "ibhagwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
 	{
 		"williamboman/mason.nvim",
 		opts = { ensure_installed = { "stylua", "shellcheck", "shfmt", "flake8", "prettier" } },

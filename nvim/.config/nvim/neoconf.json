@@ -1,0 +1,34 @@
+{
+	"neodev": {
+		"library": {
+			"enabled": true,
+			"plugins": true
+		}
+	},
+	"neoconf": {
+		"plugins": {
+			"lua_ls": {
+				"enabled": true
+			}
+		}
+	},
+	"lspconfig": {
+		"lua_ls": {
+			"Lua": {
+				"completion": {
+					"callSnippet": "Disable",
+					"keywordSnippet": "Replace"
+				}
+			}
+		},
+		"jdtls": {
+			"java.configuration.runtimes": [
+				{
+					"name": "JavaSE-21",
+					"path": "/usr/lib/jvm/openjdk21/",
+					"default": true
+				}
+			]
+		}
+	}
+}
