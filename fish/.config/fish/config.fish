@@ -6,6 +6,7 @@ end
 starship init fish | source
 fzf --fish | source
 set -gx EDITOR nvim
+alias jb="just build"
 
 function good_cd
     set chosen_dir (fzf --walker dir,follow,hidden  --walker-skip .git,node_modules,target,env)
