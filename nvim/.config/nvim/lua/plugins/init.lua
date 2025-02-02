@@ -50,7 +50,7 @@ return {
 			},
 		},
 	},
-	{ "stevearc/conform.nvim", opts = { formatters_by_ft = { json = { "prettier" } } } },
+	{ "stevearc/conform.nvim", opts = { formatters_by_ft = { json = { "prettier" }, css = { "prettier" } } } },
 	{ "ibhagwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
 	{
 		"williamboman/mason.nvim",

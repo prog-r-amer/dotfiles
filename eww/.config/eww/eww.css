@@ -1,28 +1,30 @@
 .left label {
-    margin-right: 30px;
+	margin-right: 30px;
 }
 
 .time {
-    padding-right: 0.5em;
+	padding-right: 0.5em;
 }
 
 .spacing {
-    margin-left: 10px;
-    margin-right: 10px;
+	font-size: 24px;
+	margin-top: 0.5ex;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
-.window-button{
+.window-button {
 	box-shadow: none;
 	border: 1px solid black;
 	border-radius: 0;
 }
 
 .window-button:nth-child(odd) {
-	background: #FFD9DA;
+	background: #ffd9da;
 }
 
-.window-button:nth-child(even){
-	background: #C7D9B7;
+.window-button:nth-child(even) {
+	background: #c7d9b7;
 }
 
 .right label {
@@ -31,20 +33,20 @@
 }
 
 .right > *:nth-child(odd) {
-	background: #FFD9DA;
+	background: #ffd9da;
 }
 
 .right > *:nth-child(even) {
-	background: #C7D9B7;
+	background: #c7d9b7;
 }
 
 .right > * {
 	border-left: 1px solid black;
 }
 
-.systray > * > image{
-    padding-left: 5px;
-    padding-right: 5px;
+.systray > * > image {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .shutdown-modal {
@@ -52,11 +54,10 @@
 }
 
 .shutdown {
-    font-size: 24px;
-    border: 1px solid transparent;
-    border-radius: 0;
-    background: black;
-    color: white;
+	border: 1px solid transparent;
+	border-radius: 0;
+	background: black;
+	color: white;
 }
 
 .shutdown:hover {
@@ -64,15 +65,15 @@
 }
 
 .shutdown-box:focus {
-    background: #C7D9B7;
+	background: #c7d9b7;
 }
 
 .shutdown-box:hover {
-  background: #89023E;
-  color: white;
+	background: #89023e;
+	color: white;
 }
 
-.shutdown-box{
+.shutdown-box {
 	font-size: 3em;
-	background: #FFD9DA;
+	background: #ffd9da;
 }

@@ -28,7 +28,7 @@
       (systray :class "systray")
       (box :class "volume" :space-evenly false (label :text volume) (label :unindent false :text " / ") (label :text volume_mike))
       (box :space-evenly false :halign "end" :orientation "horizontal" :class "miaumiau"
-        (label :class "time" :halign "end" :text time :xalign 0)
+        (label :class "time" :halign "end" :text time)
         (eventbox :onclick "eww open shutdown-modal --screen 1" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
       )
     )
