@@ -3,7 +3,9 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
-		dependencies = { { "folke/neoconf.nvim", cmd = "Neoconf", config = true } },
+		dependencies = {
+			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+		},
 		opts = {
 			---@type lspconfig.options
 			servers = {
@@ -11,6 +13,7 @@ return {
 				pyright = {},
 				lemminx = {},
 				jsonls = {},
+				ts_ls = {},
 			},
 		},
 	},
@@ -31,13 +34,6 @@ return {
 		},
 		---@class PluginLspOpts
 		opts = {
-			---@type lspconfig.options
-			servers = {
-				-- tsserver will be automatically installed with mason and loaded with lspconfig
-				tsserver = {},
-			},
-			-- you can do any additional lsp server setup here
-			-- return true if you don't want this server to be setup with lspconfig
 			---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
 			setup = {
 				-- example to setup with typescript.nvim
@@ -50,10 +46,22 @@ return {
 			},
 		},
 	},
-	{ "stevearc/conform.nvim", opts = { formatters_by_ft = { json = { "prettier" }, css = { "prettier" } } } },
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				json = { "prettier" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
+				css = { "prettier" },
+			},
+		},
+	},
 	{ "ibhagwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
 	{
 		"williamboman/mason.nvim",
-		opts = { ensure_installed = { "stylua", "shellcheck", "shfmt", "flake8", "prettier" } },
+		opts = {
+			ensure_installed = { "stylua", "shellcheck", "shfmt", "flake8", "prettier", "typescript-language-server" },
+		},
 	},
 }
