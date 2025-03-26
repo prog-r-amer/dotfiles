@@ -2,6 +2,7 @@ if status is-interactive
     set -Ux MANPAGER 'nvim +Man!'
     fish_add_path /home/pingutz/bin
     fish_add_path /home/pingutz/.local/bin
+    fish_add_path /home/pingutz/zig/
 end
 
 starship init fish | source
@@ -27,6 +28,6 @@ set -gx PATH "$PATH:/home/pingutz/.local/share/coursier/bin"
 pyenv init - | source
 set -gx EMSDK_QUIET 1
 
-if test -e "$HOME/.config/fish/emsdk.fish"
-    source $HOME/.config/fish/emsdk.fish
+if test -e "$HOME/emsdk/emsdk_env.fish"
+    source $HOME/emsdk/emsdk_env.fish
 end
