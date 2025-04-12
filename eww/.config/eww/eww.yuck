@@ -19,7 +19,7 @@
   (box :halign "fill"
     (box :class "left" :halign "start" :orientation "horizontal"
       (for entry in {jq(windows, "keys")}
-        (button :class "window-button" :onclick "niri msg action focus-window --id ${entry}"
+        (button :class "window-button" :onclick "niri msg action focus-window --id ${entry} --dont-move-cursor"
           {replace(jq(windows, `.["${entry}"]`), "\"", "")})
       )
     )
