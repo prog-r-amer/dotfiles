@@ -33,7 +33,7 @@ layout {
     gaps 16
     center-focused-column "never"
     preset-column-widths {
-        proportion 0.66667
+        proportion 0.5
     }
     default-column-width { proportion 1.0; }
     focus-ring {
@@ -60,6 +60,11 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 window-rule {
     match app-id=r#"dota2"#
     open-on-workspace "gaming"
+}
+
+window-rule {
+	match app-id="discord"
+	open-on-output "HDMI-A-2"
 }
 
 binds {
