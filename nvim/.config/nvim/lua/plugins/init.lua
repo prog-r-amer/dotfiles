@@ -10,13 +10,45 @@ return {
 			servers = {
 				-- pyright will be automatically installed with mason and loaded with lspconfig
 				pyright = {},
-				lemminx = {},
 				jsonls = {},
-				clangd = {},
+				clangd = { mason = false, cmd = { "clangd" } },
 			},
 		},
 	},
-	{ "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+	{
+		"CRAG666/betterTerm.nvim",
+		keys = {
+			{
+				mode = { "n", "t" },
+				"<C-;>",
+				function()
+					require("betterTerm").open()
+				end,
+				desc = "Open BetterTerm 0",
+			},
+			{
+				mode = { "n", "t" },
+				"<C-/>",
+				function()
+					require("betterTerm").open(1)
+				end,
+				desc = "Open BetterTerm 1",
+			},
+			{
+				"<leader>tt",
+				function()
+					require("betterTerm").select()
+				end,
+				desc = "Select terminal",
+			},
+		},
+		opts = {
+			position = "bot",
+			size = 20,
+			jump_tab_mapping = "<A-$tab>",
+		},
+	},
+	{ "mason-org/mason-lspconfig.nvim" },
 	{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
 	{
 		"stevearc/conform.nvim",
@@ -33,11 +65,11 @@ return {
 	},
 	{ "ibhagwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
 	{
-		"williamboman/mason.nvim",
-		version = "^1.0.0",
+		"mason-org/mason.nvim",
 		opts = {
 			ensure_installed = {
 				"rust-analyzer",
+				"clangd",
 				"stylua",
 				"shellcheck",
 				"shfmt",
