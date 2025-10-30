@@ -5,7 +5,9 @@ if status is-interactive
     fish_add_path /home/pingutz/zig/
 end
 
-starship init fish | source
+if not set -q NVIM
+    starship init fish | source
+end
 fzf --fish | source
 set -gx EDITOR nvim
 alias jb="just build"
