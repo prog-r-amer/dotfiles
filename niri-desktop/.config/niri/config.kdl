@@ -116,6 +116,7 @@ binds {
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
+	 Mod+Period { move-window-to-workspace "rest"; }
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Mod+Print { screenshot-window; }
