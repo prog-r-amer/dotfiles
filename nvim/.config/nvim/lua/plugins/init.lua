@@ -44,7 +44,9 @@ return {
 		},
 		opts = {
 			position = "bot",
+			startInserted = true,
 			size = 20,
+			prefix = "Term",
 			jump_tab_mapping = "<A-$tab>",
 		},
 	},
