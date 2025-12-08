@@ -1,1 +1,3 @@
 /nvim/.config/nvim/plugin/packer-compiled.lua
+fish/.config/fish/*
+!fish/.config/config.fish
