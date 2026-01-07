@@ -1,6 +1,20 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-require("config.lazy")
+vim.g.lazyvim_check_order = false
+vim.o.relativenumber = false
+vim.o.expandtab = false
+vim.o.tabstop = 3
+vim.o.shiftwidth = 3
+vim.o.autoindent = true
+vim.o.list = true
+vim.opt.number = true
+vim.g.mapleader = " "
+vim.opt.clipboard = "unnamedplus"
+vim.opt.relativenumber = false
+vim.keymap.set("i", "<C-s>", "<C-o>:w<CR>", { desc = "Save file" })
+vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
+require("config.lazy_plain")
+require("config.autocmds")
 
 local function get_everforest_dark_term_colors()
 	-- Temporarily set dark background
