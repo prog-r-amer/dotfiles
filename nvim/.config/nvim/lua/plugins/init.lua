@@ -3,6 +3,74 @@ local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
 return {
 	{ "LazyVim/LazyVim", enabled = false },
 	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		opts = {
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false, -- add a border to hover docs and signature help
+			},
+		},
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+		},
+		opts = function()
+			local cmp = require("cmp")
+			local types = require("cmp.types")
+			return {
+				mapping = cmp.mapping.preset.insert({
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<C-Space>"] = cmp.mapping.complete(),
+				}),
+				sources = {
+					{
+						name = "nvim_lsp",
+						entry_filter = function(entry)
+							return entry:get_kind() ~= types.lsp.CompletionItemKind.Snippet
+						end,
+					},
+					{ name = "buffer" },
+					{ name = "path" },
+				},
+			}
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+		config = function()
+			require("trouble").setup({})
+		end,
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+		},
+	},
+	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -20,7 +88,7 @@ return {
 			},
 		},
 	},
-	"folke/snacks.nvim",
+	{ "folke/snacks.nvim", opts = { input = { enabled = true }, picker = { enabled = true } } },
 	{
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
@@ -30,6 +98,11 @@ return {
 		config = function()
 			vim.lsp.config("clangd", {
 				cmd = { "clangd" },
+			})
+			vim.lsp.config("rust_analyzer", { cmd = { mason_bin .. "/rust-analyzer" } })
+			vim.lsp.config("typescript-language-server", {
+				cmd = { mason_bin .. "/typescript-language-server", "--stdio" },
+				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 			})
 			vim.lsp.config("lua_ls", {
 				cmd = {
@@ -53,6 +126,8 @@ return {
 				"jsonls",
 				"clangd",
 				"lua_ls",
+				"rust_analyzer",
+				"typescript-language-server",
 			})
 		end,
 	},

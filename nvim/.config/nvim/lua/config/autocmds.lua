@@ -22,3 +22,24 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.api.nvim_create_autocmd("BufWinEnter", {
 	callback = set_term_dark_bg,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		vim.keymap.set(
+			"n",
+			"<leader>a",
+			vim.lsp.buf.code_action,
+			{ buffer = args.buf, silent = true, desc = "LSP code action" }
+		)
+		vim.keymap.set(
+			"n",
+			"gd",
+			vim.lsp.buf.definition,
+			{ buffer = args.buf, silent = true, desc = "Go to definition" }
+		)
+		if client.server_capabilities.documentHighlightProvider then
+			client.server_capabilities.documentHighlightProvider = false
+		end
+	end,
+})
