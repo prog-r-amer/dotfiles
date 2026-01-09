@@ -14,6 +14,25 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
 require("config.lazy_plain")
 require("config.autocmds")
 
+local function toggle_line_numbers()
+	if vim.wo.relativenumber then
+		vim.wo.relativenumber = false
+		vim.wo.number = true
+	else
+		vim.wo.relativenumber = true
+		vim.wo.number = true
+	end
+end
+
+vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
+
+vim.keymap.set(
+	"n",
+	"<leader><",
+	toggle_line_numbers,
+	{ noremap = true, silent = true, desc = "Toggle absolute/relative line numbers" }
+)
+
 vim.diagnostic.config({
 	virtual_text = true,
 	underline = true,
