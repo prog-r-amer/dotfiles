@@ -3,15 +3,22 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
-	config = function()
-		local telescope = require("telescope")
-		local builtin = require("telescope.builtin")
-
-		telescope.setup({})
-
-		-- <leader><space> to search for files in all subdirectories
-		vim.keymap.set("n", "<leader><space>", builtin.find_files, {
+	keys = {
+		{
+			"<leader><space>",
+			function()
+				require("telescope.builtin").find_files()
+			end,
 			desc = "Find files",
-		})
-	end,
+		},
+		{
+			"<leader>f",
+			function()
+				require("telescope.builtin").lsp_document_symbols({
+					symbols = { "Function", "Method", "Constructor" },
+				})
+			end,
+			desc = "Find functions in file",
+		},
+	},
 }

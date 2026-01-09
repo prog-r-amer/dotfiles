@@ -1,7 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.lazyvim_check_order = false
-vim.o.relativenumber = false
 vim.o.expandtab = false
 vim.o.tabstop = 3
 vim.o.shiftwidth = 3
@@ -9,7 +8,7 @@ vim.o.autoindent = true
 vim.opt.number = true
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.keymap.set("i", "<C-s>", "<C-o>:w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
 require("config.lazy_plain")
@@ -18,7 +17,7 @@ require("config.autocmds")
 vim.diagnostic.config({
 	virtual_text = true,
 	underline = true,
-	signs = true,
+	signs = false,
 })
 
 vim.api.nvim_create_autocmd("CursorHold", {
