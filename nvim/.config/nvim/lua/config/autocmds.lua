@@ -32,6 +32,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.code_action,
 			{ buffer = args.buf, silent = true, desc = "LSP code action" }
 		)
+
+		vim.keymap.set("n", "gr", function()
+			require("telescope.builtin").lsp_references()
+		end, { buffer = args.buf, silent = true, desc = "List references (Telescope)" })
 		vim.keymap.set(
 			"n",
 			"<leader>ld",
