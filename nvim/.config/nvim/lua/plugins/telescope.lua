@@ -20,5 +20,12 @@ return {
 			end,
 			desc = "Find functions in file",
 		},
+		{
+			"<leader>s",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			desc = "Grep in files",
+		},
 	},
 }
