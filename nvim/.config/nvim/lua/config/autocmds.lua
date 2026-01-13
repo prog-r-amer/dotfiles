@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		)
 		vim.keymap.set(
 			"n",
-			"<leader>ld",
+			"gd",
 			vim.lsp.buf.definition,
 			{ buffer = args.buf, silent = true, desc = "Go to definition" }
 		)
