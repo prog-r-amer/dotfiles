@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { buffer = args.buf, silent = true, desc = "List references (Telescope)" })
 		vim.keymap.set(
 			"n",
-			"<leader>ld",
+			"gd",
 			vim.lsp.buf.definition,
 			{ buffer = args.buf, silent = true, desc = "Go to definition" }
 		)

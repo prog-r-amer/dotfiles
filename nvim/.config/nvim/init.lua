@@ -11,6 +11,22 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.relativenumber = true
 vim.keymap.set("i", "<C-s>", "<C-o>:w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+
+vim.keymap.set("n", "<leader>bd", function()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_delete(buf, { force = false })
+end, { desc = "Delete buffer" })
+
+vim.keymap.set("n", "<leader>bo", function()
+	local current = vim.api.nvim_get_current_buf()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if buf ~= current and vim.api.nvim_buf_is_loaded(buf) then
+			vim.api.nvim_buf_delete(buf, { force = true })
+		end
+	end
+end, { desc = "Close other buffers" })
 require("config.lazy_plain")
 require("config.autocmds")
 
