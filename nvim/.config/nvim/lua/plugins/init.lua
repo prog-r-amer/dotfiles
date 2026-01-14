@@ -3,6 +3,13 @@ local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
 return {
 	{ "LazyVim/LazyVim", enabled = false },
 	{
+		"FabijanZulj/blame.nvim",
+		lazy = false,
+		config = function()
+			require("blame").setup({})
+		end,
+	},
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
