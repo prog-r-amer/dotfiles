@@ -11,5 +11,13 @@ return {
 			end,
 			desc = "Toggle Flash Search",
 		},
+		{
+			"S",
+			mode = { "n" },
+			function()
+				require("flash").treesitter()
+			end,
+			desc = "Toggle Flash Search",
+		},
 	},
 }
