@@ -3,9 +3,14 @@ return {
 		"nvim-mini/mini.nvim",
 		version = false,
 		config = function()
+			require("mini.surround").setup({
+				mappings = {
+					add = "ma",
+					delete = "md",
+				},
+			})
 			local MiniFiles = require("mini.files")
 			vim.keymap.set("n", "<leader>e", function()
-				local MiniFiles = require("mini.files")
 				if MiniFiles.get_explorer_state() ~= nil then
 					MiniFiles.close()
 				end
