@@ -2,6 +2,7 @@ local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
 
 return {
 	{ "LazyVim/LazyVim", enabled = false },
+	{ "EdenEast/nightfox.nvim" },
 	{
 		"FabijanZulj/blame.nvim",
 		lazy = false,
