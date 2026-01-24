@@ -7,10 +7,11 @@ local function set_term_dark_bg()
 	local ns = vim.api.nvim_create_namespace("TermDarkBG")
 	local win = vim.api.nvim_get_current_win()
 	vim.api.nvim_win_set_hl_ns(win, ns)
+	local bg = require("nightfox.palette").load(vim.g.colors_name).bg1
 
-	vim.api.nvim_set_hl(ns, "Normal", { bg = "#000000" })
-	vim.api.nvim_set_hl(ns, "NormalNC", { bg = "#000000" })
-	vim.api.nvim_set_hl(ns, "EndOfBuffer", { bg = "#000000" })
+	vim.api.nvim_set_hl(ns, "Normal", { bg = bg })
+	vim.api.nvim_set_hl(ns, "NormalNC", { bg = bg })
+	vim.api.nvim_set_hl(ns, "EndOfBuffer", { bg = bg })
 end
 
 -- Apply when a terminal is created
