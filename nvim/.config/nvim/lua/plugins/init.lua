@@ -105,6 +105,7 @@ return {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
 		},
 		config = function()
+			local util = require("lspconfig.util")
 			vim.lsp.config("clangd", {
 				cmd = { "clangd" },
 			})
@@ -129,6 +130,28 @@ return {
 					},
 				},
 			})
+			vim.lsp.config("eslint-lsp", {
+				cmd = { mason_bin .. "/vscode-eslint-language-server", "--stdio" },
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+				},
+				root_dir = util.root_pattern(
+					"eslint.config.js",
+					"eslint.config.mjs",
+					".eslintrc",
+					".eslintrc.js",
+					".eslintrc.cjs",
+					".eslintrc.json",
+					"package.json"
+				),
+				settings = {
+					format = false, -- let conform.nvim handle formatting
+				},
+			})
 
 			vim.lsp.enable({
 				"pyright",
@@ -137,6 +160,7 @@ return {
 				"lua_ls",
 				"rust_analyzer",
 				"typescript-language-server",
+				"eslint",
 			})
 		end,
 	},
@@ -176,12 +200,12 @@ return {
 				json = { "prettier" },
 				lua = { "stylua" },
 				html = { "prettier" },
-				typescript = { "prettier" },
-				typescriptreact = { "prettier" },
+				typescript = { "prettier", "eslint_d" },
+				typescriptreact = { "prettier", "eslint_d" },
 				css = { "prettier" },
 				swift = { "swiftformat" },
 			},
-			format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+			format_after_save = { timeout_ms = 500, lsp_format = "fallback", async = true },
 		},
 	},
 	{ "ibhagwan/fzf-lua", opts = { files = { path_shorten = 3 } } },
