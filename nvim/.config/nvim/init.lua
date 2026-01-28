@@ -2,13 +2,16 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.lazyvim_check_order = false
 vim.o.expandtab = false
+vim.o.scrolloff = 8
 vim.o.tabstop = 3
 vim.o.shiftwidth = 3
 vim.o.autoindent = true
 vim.opt.number = true
 vim.g.mapleader = " "
-vim.opt.clipboard = "unnamedplus"
-vim.opt.relativenumber = true
+vim.o.clipboard = "unnamedplus"
+vim.o.relativenumber = true
+vim.o.cursorline = true
+vim.o.cursorlineopt = "number"
 
 require("config.lazy_plain")
 require("config.autocmds")
