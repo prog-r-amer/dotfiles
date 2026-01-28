@@ -14,12 +14,7 @@ local function toggle_line_numbers()
 	end
 end
 
-vim.keymap.set("n", "<leader>bd", function()
-	local buf = vim.api.nvim_get_current_buf()
-	vim.api.nvim_buf_delete(buf, { force = false })
-end, { desc = "Delete buffer" })
-
-vim.keymap.set("n", "<leader>bo", function()
+vim.keymap.set("n", "<leader>qo", function()
 	local current = vim.api.nvim_get_current_buf()
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
 		if buf ~= current and vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype ~= "terminal" then
@@ -27,6 +22,13 @@ vim.keymap.set("n", "<leader>bo", function()
 		end
 	end
 end, { desc = "Close other buffers" })
+
+vim.keymap.set("n", "<leader>qd", function()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_delete(buf, { force = false })
+end, { desc = "Delete buffer" })
+
+vim.keymap.set("n", "<leader>c", "ci{", { desc = "Change in {" })
 
 vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
 

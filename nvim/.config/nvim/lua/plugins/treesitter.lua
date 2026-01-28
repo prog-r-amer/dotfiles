@@ -26,7 +26,7 @@ return {
 						goto_next_start = {
 							["<leader>w"] = "@argument.outer",
 						},
-						goto_previous_start = { ["<leader>q"] = "@argument.outer" },
+						goto_previous_start = { ["<leader>b"] = "@argument.outer" },
 					},
 				},
 			})
