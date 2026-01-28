@@ -2,19 +2,12 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	config = function()
-		vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+		vim.api.nvim_create_autocmd("FileType", {
 			callback = function(ev)
-				local ft = vim.bo[ev.buf].filetype
-				if ft == "" then
+				if vim.bo[ev.buf].buftype ~= "" then
 					return
 				end
-
-				local lang = vim.treesitter.language.get_lang(ft)
-				if not lang then
-					return
-				end
-
-				vim.treesitter.start(ev.buf, lang)
+				pcall(vim.treesitter.start, ev.buf)
 			end,
 		})
 	end,
