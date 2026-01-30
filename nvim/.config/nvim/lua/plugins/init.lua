@@ -164,34 +164,6 @@ return {
 			})
 		end,
 	},
-	{
-		"CRAG666/betterTerm.nvim",
-		keys = {
-			{
-				mode = { "n", "t" },
-				"<C-;>",
-				function()
-					require("betterTerm").open()
-				end,
-				desc = "Open BetterTerm 0",
-			},
-			{
-				mode = { "n", "t" },
-				"<C-/>",
-				function()
-					require("betterTerm").open(1)
-				end,
-				desc = "Open BetterTerm 1",
-			},
-		},
-		opts = {
-			position = "bot",
-			startInserted = true,
-			size = 20,
-			prefix = "Term",
-			jump_tab_mapping = "<A-$tab>",
-		},
-	},
 	{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
 	{
 		"stevearc/conform.nvim",

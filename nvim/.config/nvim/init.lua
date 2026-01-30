@@ -32,25 +32,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	end,
 })
 
-local function get_dark_colors()
-	vim.o.background = "dark"
-	vim.cmd.colorscheme("everforest")
-
-	local term_colors = {}
-	for i = 0, 15 do
-		-- Force a string copy to ensure no weird references remain
-		term_colors[i] = vim.g["terminal_color_ .. i"]
-	end
-	return term_colors
-end
-
-_G.dark_colors = get_dark_colors()
-
--- Apply dark terminal colors only for terminal usage
-for i = 0, 15 do
-	vim.g["terminal_color_" .. i] = _G.dark_colors[i]
-end
-
 vim.opt.background = "light"
 vim.cmd.colorscheme("dawnfox")
 vim.cmd(":set termguicolors")
