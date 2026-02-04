@@ -28,6 +28,15 @@ return {
 			"#52bdff",
 			"#ffffff",
 		}
+		local function apply_carbon_highlights()
+			vim.api.nvim_set_hl(0, "CarbonTermNormal", { fg = "#f2f4f8", bg = "#161616" })
+			vim.api.nvim_set_hl(0, "CarbonTermBorder", { fg = "#7b7c7e", bg = "#161616" })
+		end
+		apply_carbon_highlights()
+		vim.api.nvim_create_autocmd("ColorScheme", {
+			callback = apply_carbon_highlights,
+		})
+
 		opts.on_open = function(term)
 			for i, color in ipairs(term_colors) do
 				vim.g["terminal_color_" .. (i - 1)] = color
