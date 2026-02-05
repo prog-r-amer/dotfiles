@@ -5,8 +5,8 @@ return {
 		config = function()
 			require("mini.surround").setup({
 				mappings = {
-					add = "ma",
-					delete = "md",
+					add = "gma",
+					delete = "gmd",
 				},
 			})
 			local MiniFiles = require("mini.files")

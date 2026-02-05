@@ -39,3 +39,5 @@ vim.cmd(":hi Cursor2 guifg=red guibg=red")
 vim.cmd(":set guicursor=n-v-c:block-CursorICanSee/CursorICanSee,i-ci-ve:ver50-Cursor2/lCursor2,r-cr:hor20,o:hor50")
 
 vim.api.nvim_set_hl(0, "FlashChar", { link = "Search" })
+vim.api.nvim_set_hl(0, "MarkSignHL", { fg = "#000000", bold = true })
+vim.api.nvim_set_hl(0, "MarkSignNumHL", { link = "LineNr" })

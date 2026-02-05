@@ -3,7 +3,17 @@ local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
 return {
 	{ "LazyVim/LazyVim", enabled = false },
 	{ "EdenEast/nightfox.nvim", opts = { options = { terminal_colors = false } } },
-	{ "neanias/everforest-nvim" },
+	{
+		"chentoast/marks.nvim",
+		event = "VeryLazy",
+		opts = {
+			default_mappings = false,
+			mappings = {
+				set_next = "m,",
+				next = "m]",
+			},
+		},
+	},
 	{
 		"FabijanZulj/blame.nvim",
 		lazy = false,
