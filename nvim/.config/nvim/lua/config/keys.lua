@@ -31,6 +31,8 @@ end, { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>c", "ci{", { desc = "Change in {" })
 vim.keymap.set("n", "<leader>md", "<cmd>delmarks! | delmarks a-zA-Z<cr>", { desc = "Clear all marks" })
 vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
+vim.keymap.set("n", "q:", "<nop>")
+vim.keymap.set("n", "<leader>c", "q:", { noremap = true, silent = true, desc = "Command history" })
 
 vim.keymap.set(
 	"n",
