@@ -12,6 +12,8 @@ vim.o.clipboard = "unnamedplus"
 vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 require("config.lazy_plain")
 require("config.autocmds")
