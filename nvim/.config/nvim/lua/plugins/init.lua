@@ -9,8 +9,7 @@ return {
 		opts = {
 			default_mappings = false,
 			mappings = {
-				set_next = "m,",
-				next = "m]",
+				delete_line = "dm",
 			},
 		},
 	},
