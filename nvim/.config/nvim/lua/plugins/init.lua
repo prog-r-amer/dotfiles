@@ -22,6 +22,10 @@ return {
 		end,
 	},
 	{
+		"esmuellert/codediff.nvim",
+		cmd = "CodeDiff",
+	},
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
