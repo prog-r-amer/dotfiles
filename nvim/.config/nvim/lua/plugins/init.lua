@@ -143,7 +143,7 @@ return {
 					},
 				},
 			})
-			vim.lsp.config("eslint-lsp", {
+			vim.lsp.config("eslint", {
 				cmd = { mason_bin .. "/vscode-eslint-language-server", "--stdio" },
 				filetypes = {
 					"javascript",
