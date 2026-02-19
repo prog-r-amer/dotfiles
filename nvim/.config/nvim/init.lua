@@ -1,6 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.lazyvim_check_order = false
+vim.opt.swapfile = false
 vim.o.expandtab = false
 vim.o.scrolloff = 8
 vim.o.tabstop = 3
