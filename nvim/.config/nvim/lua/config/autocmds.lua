@@ -11,12 +11,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gr", function()
 			require("telescope.builtin").lsp_references()
 		end, { buffer = args.buf, silent = true, desc = "List references (Telescope)" })
-		vim.keymap.set(
-			"n",
-			"gd",
-			vim.lsp.buf.definition,
-			{ buffer = args.buf, silent = true, desc = "Go to definition" }
-		)
+
+		vim.keymap.set("n", "gd", function()
+			require("telescope.builtin").lsp_definitions()
+		end, { buffer = args.buf, silent = true, desc = "Go to definition" })
+
 		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = args.buf, silent = true, desc = "Rename" })
 
 		if client.server_capabilities.documentHighlightProvider then
