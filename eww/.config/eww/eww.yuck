@@ -4,10 +4,6 @@
 (deflisten windows :initial "{}"
 `niri-window-handler`)
 
-(defpoll volume :interval "1s" "pactl get-sink-volume 0 | grep -o -E [[:digit:]]+% | head -n 1")
-(defpoll volume_mike :interval "1s" "pactl get-source-volume 0 | grep -o -E [[:digit:]]+% | head -n 1")
-
-
 (defwidget shutdown-modal-widget []
 	(box :spacing 10 :space-evenly false :halign "center" :class "shutdown-modal"
 		(button :class "shutdown-box" :onclick "sudo shutdown -h now" :width 100 :height 100 (label :text "⏻"))
@@ -26,7 +22,6 @@
     
     (box :class "right" :space-evenly false :halign "end" :orientation "horizontal"
       (systray :class "systray")
-      (box :class "volume" :space-evenly false (label :text volume) (label :unindent false :text " / ") (label :text volume_mike))
       (box :space-evenly false :halign "end" :orientation "horizontal" :class "miaumiau"
         (label :class "time" :halign "end" :text time)
         (eventbox :onclick "eww open shutdown-modal --screen 1" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
