@@ -22,9 +22,9 @@
     
     (box :class "right" :space-evenly false :halign "end" :orientation "horizontal"
       (systray :class "systray")
-      (box :space-evenly false :halign "end" :orientation "horizontal" :class "miaumiau"
+      (box :space-evenly false :halign "end" :orientation "horizontal"
         (label :class "time" :halign "end" :text time)
-        (eventbox :onclick "eww open shutdown-modal --screen 1" :class "shutdown" :cursor "grab" (box :class "spacing" "⏻"))
+        (eventbox :onclick "eww open shutdown-modal --screen 1" :class "shutdown" :cursor "grab" (box :class "spacing" ""))
       )
     )
   ))

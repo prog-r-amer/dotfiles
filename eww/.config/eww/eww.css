@@ -13,10 +13,7 @@
 
 .spacing {
 	font-size: 24px;
-	margin-top: 0.5ex;
-	margin-bottom: 0.5ex;
-	margin-left: 10px;
-	margin-right: 10px;
+	padding: 10px;
 }
 
 .window-button {
