@@ -4,16 +4,6 @@ vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-r>", "^", { noremap = true, silent = true })
 
-local function toggle_line_numbers()
-	if vim.wo.relativenumber then
-		vim.wo.relativenumber = false
-		vim.wo.number = true
-	else
-		vim.wo.relativenumber = true
-		vim.wo.number = true
-	end
-end
-
 vim.keymap.set("n", "<leader>qo", function()
 	local current = vim.api.nvim_get_current_buf()
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -32,10 +22,3 @@ vim.keymap.set("n", "<leader>md", "<cmd>delmarks! | delmarks a-zA-Z<cr>", { desc
 vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
 vim.keymap.set("n", "q:", "<nop>")
 vim.keymap.set("n", "<leader>c", "q:", { noremap = true, silent = true, desc = "Command history" })
-
-vim.keymap.set(
-	"n",
-	"<leader><",
-	toggle_line_numbers,
-	{ noremap = true, silent = true, desc = "Toggle absolute/relative line numbers" }
-)
