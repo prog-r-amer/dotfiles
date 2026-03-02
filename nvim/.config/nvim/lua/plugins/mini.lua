@@ -3,6 +3,14 @@ return {
 		"nvim-mini/mini.nvim",
 		version = false,
 		config = function()
+			require("mini.move").setup({
+				mappings = {
+					left = "<A-h>",
+					right = "<A-l>",
+					down = "<A-j>",
+					up = "<A-k>",
+				},
+			})
 			require("mini.surround").setup({
 				mappings = {
 					add = "gma",
