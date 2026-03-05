@@ -19,6 +19,7 @@ vim.opt.smartcase = true
 require("config.lazy_plain")
 require("config.autocmds")
 require("config.keys")
+require("config.lsp")
 
 vim.diagnostic.config({
 	virtual_text = true,
