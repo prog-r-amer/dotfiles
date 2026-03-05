@@ -14,22 +14,18 @@ return {
 		end,
 	},
 	{
-
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		config = function()
-			---@type TSConfig
-			require("nvim-treesitter.configs").setup({
-				textobjects = {
-					move = {
-						enable = true,
-						set_jumps = true,
-						goto_next_start = {
-							["<leader>w"] = "@argument.outer",
-						},
-						goto_previous_start = { ["<leader>b"] = "@argument.outer" },
+		opts = {
+			textobjects = {
+				move = {
+					enable = true,
+					set_jumps = true,
+					goto_next_start = {
+						["<leader>w"] = "@argument.outer",
 					},
+					goto_previous_start = { ["<leader>b"] = "@argument.outer" },
 				},
-			})
-		end,
+			},
+		},
 	},
 }
