@@ -7,7 +7,7 @@ vim.lsp.config("clangd", {
 vim.lsp.config("rust_analyzer", { cmd = { mason_bin .. "/rust-analyzer" } })
 
 vim.lsp.config("denols", {
-	cmd = { "deno", "language-server" },
+	cmd = { "deno", "lsp" },
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 	root_markers = { "deno.json", "deno.jsonc" },
 	settings = {
@@ -21,6 +21,12 @@ vim.lsp.config("typescript-language-server", {
 	cmd = { mason_bin .. "/typescript-language-server", "--stdio" },
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 	root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
+	root_dir = function(bufnr, on_dir)
+		if vim.fs.root(bufnr, { "deno.json", "deno.jsonc" }) then
+			return
+		end
+		on_dir(vim.fs.root(bufnr, { "package.json", "tsconfig.json", "jsconfig.json" }))
+	end,
 })
 
 vim.lsp.config("lua_ls", {
