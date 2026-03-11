@@ -130,6 +130,7 @@ return {
 				html = { "prettier" },
 				typescript = { "prettier", "eslint_d" },
 				typescriptreact = { "prettier", "eslint_d" },
+				typst = { "typstyle" },
 				css = { "prettier" },
 				swift = { "swiftformat" },
 			},

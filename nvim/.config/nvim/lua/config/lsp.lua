@@ -17,6 +17,12 @@ vim.lsp.config("denols", {
 	},
 })
 
+vim.lsp.config("tinymist", {
+	cmd = { "tinymist" },
+	filetypes = { "typst" },
+	settings = { format = false, semanticTokens = "disable" },
+})
+
 vim.lsp.config("typescript-language-server", {
 	cmd = { mason_bin .. "/typescript-language-server", "--stdio" },
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
