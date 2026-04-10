@@ -24,6 +24,11 @@ return {
 		opts = { explorer = { position = "bottom" } },
 	},
 	{
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = "VeryLazy",
+	},
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
