@@ -2,6 +2,11 @@ return {
 	{ "LazyVim/LazyVim", enabled = false },
 	{ "EdenEast/nightfox.nvim", opts = { options = { terminal_colors = false } } },
 	{
+		"folke/todo-comments.nvim",
+		opts = { comments_only = false },
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
 		"chentoast/marks.nvim",
 		event = "VeryLazy",
 		opts = {
