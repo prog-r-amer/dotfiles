@@ -12,16 +12,7 @@ fzf --fish | source
 set -gx EDITOR nvim
 alias jb="just build"
 alias se="sudoedit"
-set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!node_modules"'
-
-function good_cd
-    set chosen_dir (fzf --walker dir,follow,hidden  --walker-skip .git,node_modules,target,env)
-    if [ $chosen_dir ]
-        cd $chosen_dir
-        commandline -f repaint
-    end
-
-end
+direnv hook fish | source
 
 bind \ce good_cd
 
