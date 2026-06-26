@@ -13,12 +13,6 @@ set -gx EDITOR nvim
 alias jb="just build"
 alias se="sudoedit"
 direnv hook fish | source
-
-bind \ce good_cd
-
-# >>> coursier install directory >>>
-set -gx PATH "$PATH:/home/pingutz/.local/share/coursier/bin"
-# <<< coursier install directory <<<
 pyenv init - | source
 set -gx EMSDK_QUIET 1
 
