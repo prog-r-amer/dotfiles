@@ -20,7 +20,4 @@ if test -e "$HOME/emsdk/emsdk_env.fish"
     source $HOME/emsdk/emsdk_env.fish
 end
 
-function pi
-	nvm use system
-   command pi $argv
-end
+set --universal nvm_default_version lts
