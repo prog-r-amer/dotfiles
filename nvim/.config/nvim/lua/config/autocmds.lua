@@ -23,3 +23,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end,
 })
+
+vim.keymap.set("ca", "h", function()
+	if vim.fn.getcmdtype() == ":" and vim.fn.getcmdline():match("^h$") then
+		return "tab help"
+	end
+	return "h"
+end, { expr = true })
+
+vim.keymap.set("ca", "help", function()
+	if vim.fn.getcmdtype() == ":" and vim.fn.getcmdline():match("^help$") then
+		return "tab help"
+	end
+	return "help"
+end, { expr = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	callback = function()
+		vim.bo.buflisted = true
+	end,
+})
