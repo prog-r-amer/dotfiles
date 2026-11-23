@@ -6,17 +6,6 @@ vim.lsp.config("clangd", {
 
 vim.lsp.config("rust_analyzer", { cmd = { mason_bin .. "/rust-analyzer" } })
 
-vim.lsp.config("denols", {
-	cmd = { "deno", "lsp" },
-	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-	root_markers = { "deno.json", "deno.jsonc" },
-	settings = {
-		deno = {
-			enable = true,
-		},
-	},
-})
-
 vim.lsp.config("tinymist", {
 	cmd = { "tinymist" },
 	filetypes = { "typst" },
@@ -82,6 +71,5 @@ vim.lsp.enable({
 	"lua_ls",
 	"rust_analyzer",
 	"typescript-language-server",
-	"denols",
 	"eslint",
 })
