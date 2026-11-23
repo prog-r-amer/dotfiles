@@ -44,3 +44,31 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.buflisted = true
 	end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesBufferCreate",
+	callback = function(args)
+		local buf_id = args.data.buf_id
+
+		vim.keymap.set("n", "<C-CR>", function()
+			local fs_entry = MiniFiles.get_fs_entry()
+			if fs_entry == nil or fs_entry.fs_type ~= "file" then
+				return
+			end
+
+			-- Save the mini.files window ID before creating the tab
+			local mf_win = vim.api.nvim_get_current_win()
+			local new_target_win = vim.api.nvim_win_call(MiniFiles.get_explorer_state().target_window, function()
+				vim.cmd("vsplit")
+				return vim.api.nvim_get_current_win()
+			end)
+
+			-- Return focus to mini.files so go_in() knows which file is under the cursor
+			vim.api.nvim_set_current_win(mf_win)
+
+			-- Set the new tab's window as the target and open the file
+			MiniFiles.set_target_window(new_target_win)
+			MiniFiles.go_in({ close_on_file = true })
+		end, { buffer = buf_id, desc = "Open file in new tab" })
+	end,
+})

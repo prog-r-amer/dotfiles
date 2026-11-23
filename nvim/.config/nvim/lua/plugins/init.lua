@@ -130,9 +130,6 @@ return {
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
 		},
-		config = function()
-			local util = require("lspconfig.util")
-		end,
 	},
 	{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
 	{
