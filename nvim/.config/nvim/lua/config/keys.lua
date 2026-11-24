@@ -22,3 +22,4 @@ vim.keymap.set("n", "<leader>md", "<cmd>delmarks! | delmarks a-zA-Z<cr>", { desc
 vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
 vim.keymap.set("n", "q:", "<nop>")
 vim.keymap.set("n", "<leader>c", "q:", { noremap = true, silent = true, desc = "Command history" })
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_', { desc = "Use black hole register" })
