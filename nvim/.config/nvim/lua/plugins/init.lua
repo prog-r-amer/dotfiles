@@ -1,3 +1,15 @@
+local oxlint_configs = {
+	".oxlintrc.json",
+	".oxlintrc.jsonc",
+	"oxlint.config.ts",
+	"oxlint.config.mjs",
+	"oxlint.config.js",
+}
+
+local function has_oxlint(ctx)
+	return vim.fs.root(ctx.dirname, oxlint_configs) ~= nil
+end
+
 return {
 	{ "LazyVim/LazyVim", enabled = false },
 	{ "EdenEast/nightfox.nvim", opts = { options = { terminal_colors = false } } },
@@ -139,11 +151,41 @@ return {
 				json = { "prettier" },
 				lua = { "stylua" },
 				html = { "prettier" },
-				typescript = { "prettier", "eslint_d" },
-				typescriptreact = { "prettier", "eslint_d" },
+				typescript = { "prettier", "oxfmt", "eslint_d" },
+				typescriptreact = { "prettier", "oxfmt", "eslint_d" },
 				typst = { "typstyle" },
 				css = { "prettier" },
 				swift = { "swiftformat" },
+			},
+			formatters = {
+				oxfmt = {
+					cwd = function(_, ctx)
+						return vim.fs.root(ctx.dirname, oxlint_configs)
+					end,
+					require_cwd = true,
+					condition = function(_, ctx)
+						return has_oxlint(ctx)
+					end,
+				},
+				oxlint = {
+					cwd = function(_, ctx)
+						return vim.fs.root(ctx.dirname, oxlint_configs)
+					end,
+					require_cwd = true,
+					condition = function(_, ctx)
+						return has_oxlint(ctx)
+					end,
+				},
+				eslint_d = {
+					condition = function(_, ctx)
+						return not has_oxlint(ctx)
+					end,
+				},
+				prettier = {
+					condition = function(_, ctx)
+						return not has_oxlint(ctx)
+					end,
+				},
 			},
 			format_after_save = { timeout_ms = 500, lsp_format = "fallback", async = true },
 		},

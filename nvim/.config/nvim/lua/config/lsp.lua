@@ -17,9 +17,6 @@ vim.lsp.config("typescript-language-server", {
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 	root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
 	root_dir = function(bufnr, on_dir)
-		if vim.fs.root(bufnr, { "deno.json", "deno.jsonc" }) then
-			return
-		end
 		on_dir(vim.fs.root(bufnr, { "package.json", "tsconfig.json", "jsconfig.json" }))
 	end,
 })
@@ -41,8 +38,17 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.config("eslint-lsp", {
-	cmd = { mason_bin .. "/vscode-eslint-language-server", "--stdio" },
+local oxlint_markers = {
+	".oxlintrc.json",
+	".oxlintrc.jsonc",
+	"oxlint.config.ts",
+	"oxlint.config.mjs",
+	"oxlint.config.js",
+}
+
+vim.lsp.config("oxlint-lsp", {
+	cmd = { mason_bin .. "/oxlint-lsp" },
+	root_markers = oxlint_markers,
 	filetypes = {
 		"javascript",
 		"javascriptreact",
@@ -50,18 +56,36 @@ vim.lsp.config("eslint-lsp", {
 		"typescriptreact",
 		"vue",
 	},
-	root_marker = {
-		"eslint.config.js",
-		"eslint.config.mjs",
-		".eslintrc",
-		".eslintrc.js",
-		".eslintrc.cjs",
-		".eslintrc.json",
-		"package.json",
-	},
-	settings = {
-		format = false, -- let conform.nvim handle formatting
-	},
+})
+
+vim.lsp.config("eslint-lsp", {
+	root_dir = function(bufnr, on_dir)
+		local fname = vim.api.nvim_buf_get_name(bufnr)
+		if fname == "" then
+			return
+		end
+
+		-- Skip ESLint if this project uses Oxlint
+		if vim.fs.root(fname, oxlint_markers) then
+			return
+		end
+
+		local root = vim.fs.root(fname, {
+			"eslint.config.js",
+			"eslint.config.mjs",
+			"eslint.config.cjs",
+			"eslint.config.ts",
+			".eslintrc",
+			".eslintrc.js",
+			".eslintrc.cjs",
+			".eslintrc.json",
+			"package.json",
+		})
+
+		if root then
+			on_dir(root)
+		end
+	end,
 })
 
 vim.lsp.enable({
@@ -72,4 +96,6 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"typescript-language-server",
 	"eslint",
+	"oxlint",
+	"oxfmt",
 })
